@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sp_widget">
+    <sp_widget action="INSERT_OR_UPDATE">
+        <category>custom</category>
+        <client_script><![CDATA[function() {	
+	var c = this;	
+	c.submit = function() {
+		c.server.update();		
+	}	
+}]]></client_script>
+        <controller_as>c</controller_as>
+        <css>pre {
+	line-height: .5em;
+}
+
+form input {
+	text-align: right;
+}</css>
+        <data_table>sp_instance</data_table>
+        <demo_data/>
+        <description/>
+        <docs/>
+        <field_list/>
+        <has_preview>false</has_preview>
+        <id>calculator-widget</id>
+        <internal>false</internal>
+        <link/>
+        <name>calculator-widget</name>
+        <option_schema/>
+        <public>true</public>
+        <roles/>
+        <script><![CDATA[// data variable provided by caller
+data.tape = [];
+if (input) {
+  data.tape = input.tape;
+  data.answer = calc();
+  data.tape.unshift({n0: input.n0, n1: input.n1, op: input.op, answer: data.answer});
+	$sp.log("calc with input as follows... ");
+	$sp.log(input);
+	$sp.log("tape array...");
+	$sp.log(data.tape);
+} else {
+	$sp.log("calc initializing ");
+  data.n0 = 0;
+  data.n1 = 0;
+}
+
+function calc() {
+  var n0 = parseInt(input.n0);
+  var n1 = parseInt(input.n1);
+  if (input.op == '-')
+    return n0 - n1;
+  
+  return n0 + n1;
+}]]></script>
+        <servicenow>false</servicenow>
+        <sys_class_name>sp_widget</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2018-10-22 11:58:50</sys_created_on>
+        <sys_id>f621b8bd4f11230007cd00fe9310c73c</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>calculator-widget</sys_name>
+        <sys_package display_value="NeedIt" source="x_58872_needit">6ead8e780f603200cd674f8ce1050ed1</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="NeedIt">6ead8e780f603200cd674f8ce1050ed1</sys_scope>
+        <sys_update_name>sp_widget_f621b8bd4f11230007cd00fe9310c73c</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2018-10-22 11:58:50</sys_updated_on>
+        <template><![CDATA[<div>
+  <form ng-submit="$event.preventDefault()" class="form-horizontal well">
+    <div class="form-group">
+      <label>${Numbers please (no forgiveness)}</label><br/>
+      <input value="0" ng-model="c.data.n0" type="number" /><br/>
+      <input value="0" ng-model="c.data.n1" type="number" /><strong>&nbsp;{{c.data.op}}</strong><br/>
+      <input value="0" ng-model="c.data.answer" type="number" readonly="true" />
+    </div>
+    <div class="form-group">
+      <button type="button" class="btn btn-primary" ng-click="data.op = '+'; c.submit();">+</button>
+      <button type="button" class="btn btn-primary" ng-click="data.op = '-'; c.submit();">-</button>
+    </div>
+  </form>
+  <div class="well" ng-if="c.data.tape">
+    <label>${Tale of the tape}</label><br/>
+    <pre>
+  <div ng-repeat="x in c.data.tape track by $index"><strong>{{x.answer}}</strong> = {{x.n0}} {{x.op}} {{x.n1}}</div>
+  </pre>
+  </div>
+</div>]]></template>
+    </sp_widget>
+</record_update>

@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sp_rel_widget_clone">
+    <sp_rel_widget_clone action="INSERT_OR_UPDATE">
+        <child display_value="calculator-widget">f621b8bd4f11230007cd00fe9310c73c</child>
+        <cloned>2018-10-22 11:58:50</cloned>
+        <last_validated>2018-10-22 11:58:50</last_validated>
+        <parent display_value="Calculator">974a652347332100ba13a5554ee49089</parent>
+        <payload>&lt;?xml version="1.0" encoding="UTF-8"?&gt;&lt;sp_widget&gt;&lt;category&gt;sample&lt;/category&gt;&lt;client_script&gt;&lt;![CDATA[function() {	
+	var c = this;	
+	c.submit = function() {
+		c.server.update();		
+	}	
+}]]&gt;&lt;/client_script&gt;&lt;controller_as&gt;c&lt;/controller_as&gt;&lt;css&gt;pre {
+	line-height: .5em;
+}
+
+form input {
+	text-align: right;
+}&lt;/css&gt;&lt;data_table&gt;sp_instance&lt;/data_table&gt;&lt;demo_data/&gt;&lt;description/&gt;&lt;docs/&gt;&lt;field_list/&gt;&lt;has_preview&gt;false&lt;/has_preview&gt;&lt;id&gt;calc&lt;/id&gt;&lt;internal&gt;false&lt;/internal&gt;&lt;link/&gt;&lt;name&gt;Calculator&lt;/name&gt;&lt;option_schema/&gt;&lt;public&gt;true&lt;/public&gt;&lt;roles/&gt;&lt;script&gt;&lt;![CDATA[// data variable provided by caller
+data.tape = [];
+if (input) {
+  data.tape = input.tape;
+  data.answer = calc();
+  data.tape.unshift({n0: input.n0, n1: input.n1, op: input.op, answer: data.answer});
+	$sp.log("calc with input as follows... ");
+	$sp.log(input);
+	$sp.log("tape array...");
+	$sp.log(data.tape);
+} else {
+	$sp.log("calc initializing ");
+  data.n0 = 0;
+  data.n1 = 0;
+}
+
+function calc() {
+  var n0 = parseInt(input.n0);
+  var n1 = parseInt(input.n1);
+  if (input.op == '-')
+    return n0 - n1;
+  
+  return n0 + n1;
+}]]&gt;&lt;/script&gt;&lt;servicenow&gt;true&lt;/servicenow&gt;&lt;sys_class_name&gt;sp_widget&lt;/sys_class_name&gt;&lt;sys_created_by&gt;fredex&lt;/sys_created_by&gt;&lt;sys_created_on&gt;2014-10-22 15:46:34&lt;/sys_created_on&gt;&lt;sys_id&gt;974a652347332100ba13a5554ee49089&lt;/sys_id&gt;&lt;sys_mod_count&gt;90&lt;/sys_mod_count&gt;&lt;sys_name&gt;Calculator&lt;/sys_name&gt;&lt;sys_package display_value="Service Portal - Core" source="com.glide.service-portal"&gt;3846f32181d31300aadba4a47c598ef7&lt;/sys_package&gt;&lt;sys_policy/&gt;&lt;sys_scope display_value="Global"&gt;global&lt;/sys_scope&gt;&lt;sys_update_name&gt;sp_widget_974a652347332100ba13a5554ee49089&lt;/sys_update_name&gt;&lt;sys_updated_by&gt;admin&lt;/sys_updated_by&gt;&lt;sys_updated_on&gt;2017-08-24 19:00:38&lt;/sys_updated_on&gt;&lt;template&gt;&lt;![CDATA[&lt;div&gt;
+  &lt;form ng-submit="$event.preventDefault()" class="form-horizontal well"&gt;
+    &lt;div class="form-group"&gt;
+      &lt;label&gt;${Numbers please (no forgiveness)}&lt;/label&gt;&lt;br/&gt;
+      &lt;input value="0" ng-model="c.data.n0" type="number" /&gt;&lt;br/&gt;
+      &lt;input value="0" ng-model="c.data.n1" type="number" /&gt;&lt;strong&gt;&amp;nbsp;{{c.data.op}}&lt;/strong&gt;&lt;br/&gt;
+      &lt;input value="0" ng-model="c.data.answer" type="number" readonly="true" /&gt;
+    &lt;/div&gt;
+    &lt;div class="form-group"&gt;
+      &lt;button type="button" class="btn btn-primary" ng-click="data.op = '+'; c.submit();"&gt;+&lt;/button&gt;
+      &lt;button type="button" class="btn btn-primary" ng-click="data.op = '-'; c.submit();"&gt;-&lt;/button&gt;
+    &lt;/div&gt;
+  &lt;/form&gt;
+  &lt;div class="well" ng-if="c.data.tape"&gt;
+    &lt;label&gt;${Tale of the tape}&lt;/label&gt;&lt;br/&gt;
+    &lt;pre&gt;
+  &lt;div ng-repeat="x in c.data.tape track by $index"&gt;&lt;strong&gt;{{x.answer}}&lt;/strong&gt; = {{x.n0}} {{x.op}} {{x.n1}}&lt;/div&gt;
+  &lt;/pre&gt;
+  &lt;/div&gt;
+&lt;/div&gt;]]&gt;&lt;/template&gt;&lt;/sp_widget&gt;</payload>
+        <sys_class_name>sp_rel_widget_clone</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2018-10-22 11:58:50</sys_created_on>
+        <sys_id>b221b8bd4f11230007cd00fe9310c73f</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>f621b8bd4f11230007cd00fe9310c73c</sys_name>
+        <sys_package display_value="NeedIt" source="x_58872_needit">6ead8e780f603200cd674f8ce1050ed1</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="NeedIt">6ead8e780f603200cd674f8ce1050ed1</sys_scope>
+        <sys_update_name>sp_rel_widget_clone_b221b8bd4f11230007cd00fe9310c73f</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2018-10-22 11:58:50</sys_updated_on>
+    </sp_rel_widget_clone>
+</record_update>
